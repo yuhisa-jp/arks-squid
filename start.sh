@@ -1,4 +1,4 @@
 #!/bin/bash
 
 htpasswd -bcp /etc/squid/passwd "$SQUID_USERNAME" "$SQUID_PASSWORD"
-squid -z
+squid -u 8080
