@@ -19,7 +19,7 @@ RUN sed -i 's/http_access deny all/#http_access deny all/g' /etc/squid/squid.con
     echo "auth_param digest nonce_max_count 50" >> /etc/squid/squid.conf && \
     echo "acl pauth proxy_auth REQUIRED" >> /etc/squid/squid.conf && \
     echo "http_access allow pauth" >> /etc/squid/squid.conf && \
-    echo "no_cache deny all" >> /etc/squid/squid.conf && \
+    echo "no_cache deny all" >> /etc/squid/squid.conf
     
 COPY start.sh /start.sh
 
