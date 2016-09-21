@@ -22,6 +22,7 @@ RUN sed -i 's/http_access deny all/#http_access deny all/g' /etc/squid/squid.con
     echo "no_cache deny all" >> /etc/squid/squid.conf
     
 COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 8080
 
