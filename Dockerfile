@@ -18,8 +18,9 @@ RUN yum -y install squid httpd-tools && \
   echo "acl pauth proxy_auth REQUIRED" >> /etc/squid/squid.conf && \
   echo "http_access allow pauth" >> /etc/squid/squid.conf && \
   echo "no_cache deny all" >> /etc/squid/squid.conf && \
-  htpasswd -bcp /etc/squid/passwd $SQUID_USERNAME $SQUID_PASSWORD && \
   yum clean all
+  
+RUN htpasswd -bcp /etc/squid/passwd $SQUID_USERNAME $SQUID_PASSWORD && \
 
 EXPOSE 8080
 
