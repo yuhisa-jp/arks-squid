@@ -20,7 +20,7 @@ RUN yum -y install squid httpd-tools && \
   echo "no_cache deny all" >> /etc/squid/squid.conf && \
   yum clean all
   
-RUN htpasswd -bcp /etc/squid/passwd $SQUID_USERNAME $SQUID_PASSWORD && \
+RUN htpasswd -bcp /etc/squid/passwd $SQUID_USERNAME $SQUID_PASSWORD
 
 EXPOSE 8080
 
