@@ -8,7 +8,7 @@ ENV SQUID_PASSWORD squid
 RUN yum -y install squid httpd-tools && \
     yum clean all
 
-RUN sed -i 's/http_access allow localnet/http_acccess deny localnet/g' /etc/squid/squid.conf && \
+RUN sed -i 's/http_access allow localnet/http_access deny localnet/g' /etc/squid/squid.conf && \
     sed -i 's/http_access deny all/#http_access deny all/g' /etc/squid/squid.conf && \
     sed -i 's/http_port 3128/#http_port 3128/g' /etc/squid/squid.conf && \
     echo "http_port 8080" >> /etc/squid/squid.conf && \
