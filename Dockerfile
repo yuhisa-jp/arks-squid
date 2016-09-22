@@ -8,7 +8,8 @@ ENV SQUID_PASSWORD squid
 RUN yum -y install squid httpd-tools && \
     yum clean all
 
-RUN sed -i 's/http_access deny all/#http_access deny all/g' /etc/squid/squid.conf && \
+RUN sed -i 's/http_access allow localnet/http_acccess deny localnet/g' /etc/squid/squid.conf && \
+    sed -i 's/http_access deny all/#http_access deny all/g' /etc/squid/squid.conf && \
     sed -i 's/http_port 3128/#http_port 3128/g' /etc/squid/squid.conf && \
     echo "http_port 8080" >> /etc/squid/squid.conf && \
     echo "auth_param digest program /usr/lib64/squid/digest_file_auth /etc/squid/passwd" >> /etc/squid/squid.conf && \
@@ -19,6 +20,7 @@ RUN sed -i 's/http_access deny all/#http_access deny all/g' /etc/squid/squid.con
     echo "auth_param digest nonce_max_count 50" >> /etc/squid/squid.conf && \
     echo "acl pauth proxy_auth REQUIRED" >> /etc/squid/squid.conf && \
     echo "http_access allow pauth" >> /etc/squid/squid.conf && \
+    echo "cache_dir null /dev/null" >> /etc/squid/squid.conf && \
     echo "no_cache deny all" >> /etc/squid/squid.conf && \
     echo "cache_mem 16 MB" >> /etc/squid/squid.conf
     
