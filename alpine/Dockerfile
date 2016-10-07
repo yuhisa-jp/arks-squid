@@ -5,7 +5,7 @@ MAINTAINER "yuhisa-jp"
 ENV SQUID_USERNAME squid
 ENV SQUID_PASSWORD squid
 
-RUN apk --no-cache add openssh squid apache2-utils && \
+RUN apk --no-cache add squid apache2-utils && \
     rm -rf /var/cache/apk/*
 
 RUN sed -i 's/http_access allow localhost manager/http_access deny localhost manager/g' /etc/squid/squid.conf && \
