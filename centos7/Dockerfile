@@ -26,9 +26,9 @@ RUN sed -i 's/http_access allow localhost manager/http_access deny localhost man
     echo "no_cache deny all" >> /etc/squid/squid.conf && \
     echo "cache_mem 64 MB" >> /etc/squid/squid.conf
     
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY start.sh /tmp/start.sh
+RUN chmod +x /tmp/start.sh
 
 EXPOSE 8080
 
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["/tmp/start.sh"]
